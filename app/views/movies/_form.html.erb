@@ -25,19 +25,22 @@
     <%= f.label "runtime_in_minutes" %><br>
     <%= f.number_field "runtime_in_minutes" %>
   </div>
-<!--   <div>
-    <%= f.label "poster_image_url" %><br>
-    <%= f.text_field "poster_image_url" %>
-  </div>
- -->  
   <div>
     <%= f.label "description" %><br>
     <%= f.text_area "description" %>
   </div>
+  <hr />
+  <div>
+    <strong>Add Movie Poster</strong><br>
+  </div>
   <div>
     <%= f.file_field "movie_poster" %><br>
   </div>
-
+  <div>
+    <strong>Or</strong> <%= f.label "remote_movie_poster_url" %><br>
+    <%= f.text_field "remote_movie_poster_url" %>
+  </div>
+  <br>
   <div>
     <%= f.submit "Submit" %> 
   </div>
