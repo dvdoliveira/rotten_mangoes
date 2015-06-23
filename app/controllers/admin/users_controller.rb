@@ -5,6 +5,4 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
 
-
-
 end
