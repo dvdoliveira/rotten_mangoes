@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  belongs_to :admin
   has_many :reviews
 
   validates :email,
