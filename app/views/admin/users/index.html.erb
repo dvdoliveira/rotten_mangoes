@@ -1,4 +1,5 @@
 <h1>Users List</h1>
+<%= link_to "Add new user!", new_admin_user_path %>
 
 <table>
   <thead>
@@ -10,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @users.each do |user| %>  
+  <% @users_admin.each do |user| %>  
     <tr>
        <td><%= user.full_name %></td>
        <td><%= user.email %></td>
