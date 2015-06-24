@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   namespace :admin do
-    resources :users
+    resources :users do
+      post :impersonate
+      get :stop_impersonating
+    end
   end
   root to: 'movies#index'
 

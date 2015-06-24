@@ -16,6 +16,10 @@
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value) %>
   <% end %>
+  <% if impersonating_user? %> 
+    <p><%= link_to 'Switch back to account', admin_user_stop_impersonating_path(session[:user_id]), method: :get %></p>
+  <% end %> 
+
   <%= yield %>
   <%= render 'layouts/footer' %>
   <!-- Latest compiled and minified BootstrapJavaScript -->
