@@ -45,3 +45,6 @@ gem 'carrierwave'
 # CSS Framework
 gem 'bootstrap-sass'
 
+group :development do
+  gem 'pry'
+end
