@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
     params['search'] ? @query = params['search']['query'] : @query = nil
     params['search'] ? @duration_a = params['search']['duration_a'] : @duration_a = nil
     params['search'] ? @duration_b = params['search']['duration_b'] : @duration_b = nil
-    @movies = Movie.search(params[:search]).order(params[:order_by].to_s)
+    @movies = Movie.search(params[:search]).order(params[:order_by].to_s).page(params[:page]).per(5)
   end
 
   def show
