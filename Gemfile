@@ -45,6 +45,9 @@ gem 'carrierwave'
 # CSS Framework
 gem 'bootstrap-sass'
 
+# Add pagination
+gem 'kaminari'
+
 group :development do
   gem 'pry'
 end
