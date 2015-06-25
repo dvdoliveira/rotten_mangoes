@@ -1,0 +1,10 @@
+<%= image_tag movie.movie_poster_url(:thumb).to_s %>
+<h2><%= link_to movie.title, movie_path(movie) %> 
+<% if movie.review_average > 0 %>
+  <%= movie.review_average %>/10
+<% end %>
+</h2>
+<h3><%= formatted_date(movie.release_date) %></h3>
+<h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+<p><%= movie.description %></p>
+<hr>
