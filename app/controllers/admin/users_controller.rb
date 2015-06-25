@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_filter :restrict_admin
 
   def index
-    @users_admin = User.all
+    @users_admin = User.all.page(params[:page]).per(5)
   end
 
   def new
