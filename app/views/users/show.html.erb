@@ -1,3 +1,12 @@
 <h1>User Profile</h1>
 <p><%= @user.full_name %></p>
 <p><%= @user.email %></p>
+<% unless @user.reviews.empty? %>
+  <hr>
+  <h2>Your movie reviews</h2>
+  <% @user.reviews.each do |review| %>
+    <p><%= link_to review.movie.title, movie_path(review.movie) %></p>
+    <p><%= review.rating_out_of_ten %>/10</p>
+    <p><%= review.text %></p>
+  <% end %>
+<% end %>
