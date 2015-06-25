@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def restrict_admin
+    redirect_to movies_path unless current_user && current_user.admin
+  end
+
   def restrict_access
     if !current_user
       flash[:alert] = "You must log in."
