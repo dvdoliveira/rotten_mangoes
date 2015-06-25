@@ -38,6 +38,10 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Image manipulation and upload
 gem 'rmagick'
 gem 'carrierwave'
+
+# CSS Framework
+gem 'bootstrap-sass'
 
