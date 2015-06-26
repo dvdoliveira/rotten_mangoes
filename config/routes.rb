@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :genres
+
   resources :movies do
     resources :reviews, only: [:new, :create]
   end
