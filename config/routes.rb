@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :genres
-
   resources :movies do
     resources :reviews, only: [:new, :create]
   end
@@ -13,6 +11,7 @@ Rails.application.routes.draw do
       post :impersonate
       get :stop_impersonating
     end
+    resources :genres
   end
   root to: 'movies#index'
 

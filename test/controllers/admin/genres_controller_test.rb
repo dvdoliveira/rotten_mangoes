@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GenresControllerTest < ActionController::TestCase
+class Admin::GenresControllerTest < ActionController::TestCase
   setup do
     @genre = genres(:one)
   end
