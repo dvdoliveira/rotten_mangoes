@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def restrict_admin
-    redirect_to movies_path unless current_user && current_user.admin
+    redirect_to movies_path unless current_user && current_user.admin || impersonating_user?
   end
 
   def restrict_access
@@ -20,5 +20,11 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def impersonating_user?
+    session[:admin_session]
+  end
+
   helper_method :current_user
+  helper_method :impersonating_user?
+
 end
