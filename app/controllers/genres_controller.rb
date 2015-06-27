@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-  # before_filter :restrict_admin
+  before_filter :restrict_admin
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
 
   # GET /genres

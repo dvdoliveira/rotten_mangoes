@@ -3,4 +3,5 @@ class Genre < ActiveRecord::Base
   has_many :movies, through: :movie_genres
 
   validates :name, presence: true, uniqueness: true
+  
 end
