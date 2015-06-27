@@ -11,18 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626201010) do
-
-  create_table "categories", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-  end
-
-  create_table "categorization", id: false, force: true do |t|
-    t.integer "movie_id"
-    t.integer "category_id"
-  end
+ActiveRecord::Schema.define(version: 20150627115319) do
 
   create_table "genres", force: true do |t|
     t.string   "name"
