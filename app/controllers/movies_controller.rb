@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_action :set_movie, only: [:show, :edit, :update, :destroy]
   def index
     params['search'] ? @query = params['search']['query'] : @query = nil
     params['search'] ? @duration_a = params['search']['duration_a'] : @duration_a = nil
@@ -7,7 +8,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    #set_movie
   end
 
   def new
@@ -17,16 +18,14 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
+    #set_movie
+    @all_genres = Genre.all
+    @movie_genres = @movie.movie_genres.build
   end
 
   def create
     @movie = Movie.new(movie_params)
-    binding.pry
-    params[:genres][:id].each do |genre|
-      @movie.movie_genres.build(genre_id: genre)
-    end
-
+    update_movie_genres
     if @movie.save
       redirect_to movies_path, notice: "#{@movie.title} was submitted successfully!"
     else
@@ -35,8 +34,8 @@ class MoviesController < ApplicationController
   end
 
   def update
-    @movie = Movie.find(params[:id])
-
+    #set_movie
+    update_movie_genres
     if @movie.update_attributes(movie_params)
       redirect_to movie_path(@movie)
     else
@@ -51,6 +50,18 @@ class MoviesController < ApplicationController
   end
 
   protected
+
+  def update_movie_genres
+    params[:genres][:id].each do |genre|
+      if !genre.empty?
+        @movie.movie_genres.build(genre_id: genre)
+      end
+    end
+  end
+
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 
   def movie_params
     params.require(:movie).permit(
