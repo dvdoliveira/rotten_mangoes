@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
+  before_filter :restrict_access, only: [:new, :edit, :update, :destroy]
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  
   def index
     params['search'] ? @query = params['search']['query'] : @query = nil
     params['search'] ? @duration_a = params['search']['duration_a'] : @duration_a = nil

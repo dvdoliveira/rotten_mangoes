@@ -1,5 +1,7 @@
 <h1>Rotten Mangoes</h1>
-<%= link_to "Submit a movie!", new_movie_path %>
+<% if current_user %>
+  <%= link_to "Submit a movie!", new_movie_path %>
+<% end %> 
 <hr>
 <%= form_tag movies_path, method: :get do %>
   <%= label_tag 'Filters' %>
