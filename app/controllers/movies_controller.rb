@@ -12,6 +12,8 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    @all_genres = Genre.all
+    @movie_genres = @movie.movie_genres.build
   end
 
   def edit
@@ -20,6 +22,10 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+    binding.pry
+    params[:genres][:id].each do |genre|
+      @movie.movie_genres.build(genre_id: genre)
+    end
 
     if @movie.save
       redirect_to movies_path, notice: "#{@movie.title} was submitted successfully!"
@@ -48,8 +54,8 @@ class MoviesController < ApplicationController
 
   def movie_params
     params.require(:movie).permit(
-      :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description, :movie_poster, :remote_movie_poster_url
-    )
+      :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description, :movie_poster, :remote_movie_poster_url, movie_genres_attributes: [ :id, :name] 
+      )  
   end
 
 end

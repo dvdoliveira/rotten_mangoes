@@ -29,6 +29,13 @@
     <%= f.label "description" %><br>
     <%= f.text_area "description" %>
   </div>
+  <div>
+    <%= fields_for (@movie_genres) do |mg| %>
+      <%= mg.label "Genres" %>
+      <%= collection_select(:genres, :id, @all_genres, :id, :name, {}, {multiple: true} ) %>
+    <% end %>
+  </div>
+
   <hr />
   <div>
     <strong>Add Movie Poster</strong><br>

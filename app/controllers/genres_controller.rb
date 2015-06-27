@@ -1,5 +1,5 @@
-class Admin::GenresController < ApplicationController
-  before_filter :restrict_admin
+class GenresController < ApplicationController
+  # before_filter :restrict_admin
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
 
   # GET /genres
@@ -24,7 +24,7 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to admin_genres_path, notice: "#{@genre.name} was submitted successfully!"
+      redirect_to genres_path, notice: "#{@genre.name} was submitted successfully!"
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::GenresController < ApplicationController
   # PATCH/PUT /genres/1
   def update
     if @genre.update_attributes(genre_params)
-      redirect_to admin_genres_path, notice: "#{@genre.name} was successfully updated!"
+      redirect_to genres_path, notice: "#{@genre.name} was successfully updated!"
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class Admin::GenresController < ApplicationController
   # DELETE /genres/1
   def destroy
     @genre.destroy
-    redirect_to admin_genres_path, notice: "#{@genre.name} was successfully deleted!"
+    redirect_to genres_path, notice: "#{@genre.name} was successfully deleted!"
   end
 
   private
